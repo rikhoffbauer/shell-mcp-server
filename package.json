@@ -1,0 +1,31 @@
+{
+  "name": "shell-mcp-server",
+  "type": "module",
+  "bin": {
+    "shell-mcp-server": "dist/index.js"
+  },
+  "private": true,
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "prepare": "bun run build",
+    "build": "bun build index.ts --outfile=dist/index.js --minify --target=bun",
+    "postbuild": "chmod +x dist/index.js",
+    "test": "vitest run",
+    "inspect": "bunx @modelcontextprotocol/inspector bun index.ts",
+    "test:watch": "vitest watch"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/inspector": "^0.13.0",
+    "@types/bun": "latest",
+    "@vitest/coverage-v8": "1.6.0",
+    "vitest": "1.6.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "execa": "^9.6.0",
+    "zod": "^3.25.49"
+  }
+}
